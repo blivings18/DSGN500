@@ -27,32 +27,57 @@
 
         /* Override Bootstrap's primary background color */
         .bg-primary {
-            background-color: var(--enable-purple) !important;
-        }
-
-        /* Override text-primary color */
-        .text-primary {
-            color: var(--enable-purple) !important;
+            background-color: var(--enable-purple);
         }
 
         /* Override Google translate text */
         #google_translate_element .goog-te-gadget {
-            color: black;
+            color: white;
         }
 
         /* Override Google translate link color */
         #google_translate_element .goog-te-gadget span a {
-            color: black;
+            color: white;
         }
 
         /* Override radio button checked */
         .custom-control-input:checked~.custom-control-label::before {
-            background-color: var(--enable-purple);
+            background-color: var(--enable-purple-hover);
         }
 
         /* Override radio button label text */
         .custom-control-label {
             font-weight: 200;
+        }
+
+        /* Override input highlight color */
+        .form-control:focus {
+            border-color: var(--enable-purple-hover);
+            box-shadow: 0 0 0 .2rem rgba(130, 36, 227, .25);
+        }
+
+        /* Override select highlight color */
+        .custom-select:focus {
+            border-color: var(--enable-purple-hover);
+            box-shadow: 0 0 0 .2rem rgba(130, 36, 227, .25);
+        }
+
+        /* Override select highlight color */
+        .custom-select option:hover {
+            background-color: var(--enable-purple-hover) !important;
+        }
+
+        .custom-select-option:hover {
+            background-color: var(--enable-purple-hover) !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: red;
+        }
+
+
+        .dropdown-item.active {
+            background-color: red;
         }
 
         .custom-input-label {
@@ -61,13 +86,8 @@
             font-weight: bold;
         }
 
-        .form-section .card .card-header {
-            color: black;
+        .card .card-header {
             font-weight: bold;
-        }
-
-        .form-section .card .card-header i {
-            color: var(--enable-purple);
         }
 
         .bg-black {
@@ -92,79 +112,128 @@
     <nav class="navbar bg-black color-white">
         <span class="navbar-brand mb-0 h1">E-NABLE REQUEST FORM</span>
         <form class="form-inline my-2 my-lg-0">
-            <div class="d-flex px-2 bg-enable-purple">
+            <div class="d-flex px-2 bg-black">
                 <i class="bi bi-translate mr-3"></i>
                 <div id="google_translate_element"></div>
             </div>
         </form>
     </nav>
     <div class="container">
-        <div class="form-section">
-            <div class="card mt-3">
-                <div class="card-header">
-                    <i class="bi bi-person-fill"></i>
-                    RECIPIENT
-                </div>
-                <div class="card-body p-3">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-5 col-sm-12">
-                                <div class="form-group custom-input-label">
-                                    <label for="firstName">FIRST NAME</label>
-                                    <input type="text" class="form-control" id="firstName">
-                                </div>
+        <div class="card mt-3" id="recipient">
+            <div class="card-header">
+                <i class="bi bi-person-fill"></i>
+                RECIPIENT
+            </div>
+            <div class="card-body p-3">
+                <form>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="form-group custom-input-label">
+                                <label for="firstName">FIRST NAME</label>
+                                <input type="text" class="form-control" id="firstName">
                             </div>
-                            <div class="col-md-5 col-sm-12">
-                                <div class="form-group custom-input-label">
-                                    <label for="lastName">LAST NAME</label>
-                                    <input type="text" class="form-control" id="lastName">
-                                </div>
+                        </div>
+                        <div class="col-md-5 col-sm-12">
+                            <div class="form-group custom-input-label">
+                                <label for="lastName">LAST NAME</label>
+                                <input type="text" class="form-control" id="lastName">
                             </div>
-                            <div class="col-md-2 col-sm-12">
-                                <div class="form-group custom-input-label">
-                                    <label for="age">AGE</label>
-                                    <input type="number" class="form-control" id="age">
+                        </div>
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group custom-input-label">
+                                <label for="age">AGE</label>
+                                <input type="number" class="form-control" id="age" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 custom-input-label">GENDER</div>
+                        <div class="col-12">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="gender_m" name="gender" class="custom-control-input"
+                                    value="Male" checked>
+                                <label class="custom-control-label" for="gender_m">MALE</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="gender_f" name="gender" class="custom-control-input"
+                                    value="Female">
+                                <label class="custom-control-label" for="gender_f">FEMALE</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="gender_o" name="gender" class="custom-control-input"
+                                    value="other">
+                                <label class="custom-control-label" for="gender_o">PREFER NOT TO SAY</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mt-3" id="case">
+            <div class="card-header">
+                <i class="bi bi-folder-fill"></i>
+                CASE
+            </div>
+            <div class="card-body p-3">
+                <form>
+                    <div class="row">
+                        <div class="form-group custom-input-label col">
+                            <label for="caseDescription">DESCRIPTION</label>
+                            <textarea class="form-control" id="caseDescription" rows="3"></textarea>
+                            <small id="caseDescriptionHelp" class="form-text text-muted">Take a moment to describe your
+                                Case. Provide as much additional information as possible to volunteers so they can
+                                effectively evaluate your needs, and ultimately provide you with help. The better the
+                                details you give, the better the community can assess your Case and the sooner you can
+                                get help.</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mt-3" id="device">
+            <div class="card-header">
+                <i class="bi bi-person-raised-hand"></i>
+                PROSTHETIC DEVICE
+            </div>
+            <div class="card-body p-3">
+                <form>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <small id="prostheticDeviceHelp" class="form-text text-muted mb-3"> You can check out the
+                                <span>
+                                    <a class="color-enable-purple" target="_blank"
+                                        href="https://hub.e-nable.org/s/e-nable-devices/">e-NABLE
+                                        Design Reference</a>
+                                </span> for a comprehensive listing of all e-NABLE devices</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 col-sm-12 flex-column">
+                            <div class="d-flex">HAND</div>
+                            <div class="d-flex mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="hand_l" name="hand" class="custom-control-input"
+                                        value="Left" checked>
+                                    <label class="custom-control-label" for="hand_l">LEFT-HAND</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="hand_r" name="hand" class="custom-control-input"
+                                        value="Right">
+                                    <label class="custom-control-label" for="hand_r">RIGHT-HAND</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 custom-input-label">GENDER</div>
-                            <div class="col-12">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="gender_m" name="gender" class="custom-control-input"
-                                        value="Male" checked>
-                                    <label class="custom-control-label" for="gender_m">MALE</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="gender_f" name="gender" class="custom-control-input"
-                                        value="Female">
-                                    <label class="custom-control-label" for="gender_f">FEMALE</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="gender_o" name="gender" class="custom-control-input"
-                                        value="other">
-                                    <label class="custom-control-label" for="gender_o">PREFER NOT TO SAY</label>
-                                </div>
-                            </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="prostheticHandDeviceSelect">DEVICE</label>
+                            <select class="custom-select custom-select-sm" id="prostheticHandDeviceSelect">
+                                <option selected>Select a device...</option>
+                                <option class="custom-select-option" value"1">Raptor Reloaded</option>
+                                <option value="2">Phoenix v2</option>
+                                <option value="3">Talon</option>
+                            </select>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="form-section">
-            <div class="card mt-3">
-                <div class="card-header">
-                    <i class="bi bi-folder-fill"></i>
-                    CASE
-                </div>
-            </div>
-        </div>
-        <div class="form-section">
-            <div class="card mt-3">
-                <div class="card-header">
-                    <i class="bi bi-gear-fill"></i>
-                    DEVICE
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">
