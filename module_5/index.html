@@ -7,20 +7,98 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --enable-purple: #8224e3;
+            --enable-purple-hover: #913de5;
+        }
+
+        /* Override Bootstrap's primary button color */
+        .btn-primary {
+            background-color: var(--enable-purple);
+            border-color: var(--enable-purple);
+        }
+
+        /* Override Bootstrap's primary hover button color */
+        .btn-primary:hover {
+            background-color: var(--enable-purple-hover);
+            border-color: var(--enable-purple);
+        }
+
+        /* Override Bootstrap's primary background color */
+        .bg-primary {
+            background-color: var(--enable-purple) !important;
+        }
+
+        /* Override text-primary color */
+        .text-primary {
+            color: var(--enable-purple) !important;
+        }
+
+        /* Override Google translate text */
+        #google_translate_element .goog-te-gadget {
+            color: black;
+        }
+
+        /* Override Google translate link color */
+        #google_translate_element .goog-te-gadget span a {
+            color: black;
+        }
+
+        /* Override radio button checked */
+        .custom-control-input:checked~.custom-control-label::before {
+            background-color: var(--enable-purple);
+        }
+
+        /* Override radio button label text */
+        .custom-control-label {
+            font-weight: 200;
+        }
+
+        .custom-input-label {
+            color: grey-dark;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        .form-section .card .card-header {
+            color: black;
+            font-weight: bold;
+        }
+
+        .form-section .card .card-header i {
+            color: var(--enable-purple);
+        }
+
+        .bg-black {
+            background-color: black;
+        }
+
+        .bg-enable-purple {
+            background-color: var(--enable-purple);
+        }
+
+        .color-white {
+            color: white;
+        }
+
+        .color-enable-purple {
+            color: var(--enable-purple);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" id="device-request-form-container">
-        <div class="row">
-            <div class="col">
-                <h3>e-NABLE Form</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
+    <nav class="navbar bg-black color-white">
+        <span class="navbar-brand mb-0 h1">E-NABLE REQUEST FORM</span>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="d-flex px-2 bg-enable-purple">
+                <i class="bi bi-translate mr-3"></i>
                 <div id="google_translate_element"></div>
             </div>
-        </div>
+        </form>
+    </nav>
+    <div class="container">
         <div class="form-section">
             <div class="card mt-3">
                 <div class="card-header">
@@ -31,50 +109,47 @@
                     <form>
                         <div class="row">
                             <div class="col-md-5 col-sm-12">
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
+                                <div class="form-group custom-input-label">
+                                    <label for="firstName">FIRST NAME</label>
                                     <input type="text" class="form-control" id="firstName">
                                 </div>
                             </div>
                             <div class="col-md-5 col-sm-12">
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
+                                <div class="form-group custom-input-label">
+                                    <label for="lastName">LAST NAME</label>
                                     <input type="text" class="form-control" id="lastName">
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <div class="form-group">
-                                    <label for="age">Age</label>
+                                <div class="form-group custom-input-label">
+                                    <label for="age">AGE</label>
                                     <input type="number" class="form-control" id="age">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">Gender</div>
+                            <div class="col-12 custom-input-label">GENDER</div>
                             <div class="col-12">
-                                <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" id="male" name="optradio" value="male"
-                                        checked>Male
-                                    <label class="form-check-label" for="male"></label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="gender_m" name="gender" class="custom-control-input"
+                                        value="Male" checked>
+                                    <label class="custom-control-label" for="gender_m">MALE</label>
                                 </div>
-                                <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" id="female" name="optradio"
-                                        value="female">Female
-                                    <label class="form-check-label" for="female"></label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="gender_f" name="gender" class="custom-control-input"
+                                        value="Female">
+                                    <label class="custom-control-label" for="gender_f">FEMALE</label>
                                 </div>
-                                <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" id="other" name="optradio"
-                                        value="other">Prefer
-                                    not
-                                    to say
-                                    <label class="form-check-label" for="other"></label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="gender_o" name="gender" class="custom-control-input"
+                                        value="other">
+                                    <label class="custom-control-label" for="gender_o">PREFER NOT TO SAY</label>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
         </div>
         <div class="form-section">
             <div class="card mt-3">
@@ -93,7 +168,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col d-flex justify-content-end mt-2">
+            <div class="col d-flex justify-content-end my-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
